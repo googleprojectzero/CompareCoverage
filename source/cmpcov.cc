@@ -517,7 +517,7 @@ void __sanitizer_cov_trace_gep(uintptr_t Idx) {
 
 void __sanitizer_weak_hook_memcmp(void *caller_pc, const void *s1,
                                   const void *s2, size_t n, int result) {
-  // Ignore too too long data comparisons.
+  // Ignore too long data comparisons.
   if (n > kMaxDataCmpLength) {
     return;
   }
