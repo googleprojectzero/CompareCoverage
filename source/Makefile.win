@@ -1,0 +1,17 @@
+CXX=clang-cl
+CXXFLAGS=-O2 -Wno-deprecated-declarations
+DEPS=common.h modules.h tokenizer.h traces.h
+SRCS=cmpcov.cc common.cc modules.cc tokenizer.cc traces.cc
+OBJS=$(subst .cc,.o,$(SRCS))
+LIB=llvm-lib
+
+all: cmpcov.lib
+
+%.o: %.cc $(DEPS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
+
+cmpcov.lib: $(OBJS)
+	$(LIB) /out:$@ $(OBJS)
+
+clean:
+	$(RM) cmpcov.lib $(OBJS)

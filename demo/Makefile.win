@@ -1,0 +1,16 @@
+CXX=clang++
+CXXFLAGS=-fsanitize=address -fsanitize-coverage=trace-pc-guard,trace-cmp
+LDFLAGS=-fsanitize=address -lcmpcov -L../source
+SRCS=demo.cc
+OBJS=$(subst .cc,.o,$(SRCS))
+
+all: demo.exe
+
+%.o: %.cc $(DEPS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
+
+demo.exe: $(OBJS)
+	$(CXX) -o $@ $< $(LDFLAGS)
+
+clean:
+	$(RM) demo $(OBJS)

@@ -1,0 +1,17 @@
+AR=ar
+CXX=clang++
+CXXFLAGS=-O2 -fPIC
+DEPS=common.h modules.h tokenizer.h traces.h
+SRCS=cmpcov.cc common.cc modules.cc tokenizer.cc traces.cc
+OBJS=$(subst .cc,.o,$(SRCS))
+
+all: libcmpcov.a
+
+%.o: %.cc $(DEPS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
+
+libcmpcov.a: $(OBJS)
+	$(AR) cr $@ $(OBJS)
+
+clean:
+	$(RM) libcmpcov.a $(OBJS)
