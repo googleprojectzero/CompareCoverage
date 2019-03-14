@@ -28,6 +28,7 @@
 #endif
 
 #include <cstdio>
+#include <cstring>
 #include <unordered_map>
 
 #include "common.h"

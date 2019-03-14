@@ -26,6 +26,7 @@
 #endif
 
 #include <cstdarg>
+#include <cstdio>
 
 void Die(const char *format, ...) {
   va_list args;

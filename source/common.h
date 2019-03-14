@@ -26,11 +26,7 @@
 
 #include <inttypes.h>
 
-#include <cstring>
-#include <memory>
-#include <string>
-#include <unordered_set>
-#include <vector>
+#include <cstdlib>
 
 #ifndef MAX_PATH
 #define MAX_PATH 260
